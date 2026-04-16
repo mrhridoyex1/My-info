@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pro Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+  --bg:#0b1220;
+  --text:#fff;
+  --card:#ffffff10;
+}
+
+.light{
+  --bg:#f5f5f5;
+  --text:#111;
+  --card:#ffffff;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter', sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  transition:0.4s;
+  overflow-x:hidden;
+}
+
+/* 🌌 3D BACKGROUND */
+.bg3d{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+  pointer-events:none;
+
+  background: url("https://raw.githubusercontent.com/mrhridoyex1/My-info/main/photo.jpg") center/cover no-repeat;
+}
+
+/* toggle */
+.toggle{
+  position:fixed;
+  top:20px;
+  right:20px;
+  width:60px;
+  height:30px;
+  background:#222;
+  border-radius:30px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  padding:5px;
+  z-index:10;
+}
+
+/* moving circle */
+.switch{
+  width:25px;
+  height:25px;
+  background:#fff;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:0.4s;
+}
+
+/* light mode এ গেলে slide করবে */
+body.light .switch{
+  transform:translateX(30px);
+}
+
+/* icon style */
+#modeIcon{
+  font-size:12px;
+  color:#333;
+  transition:0.3s;
+}
+
+/* container */
+.container{
+  max-width:1200px;
+  margin:80px auto;
+  padding:20px;
+  position:relative;
+}
+
+/* 🔥 NEW */
+.skills{
+  margin-top:80px;
+  width:100%;
+  max-width:800px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* card */
+.card{
+  border-radius:20px;
+  overflow:hidden;
+  background:var(--card);
+  backdrop-filter:blur(20px);
+  box-shadow:0 0 40px rgba(0,0,0,0.5);
+  transition:0.4s;
+}
+
+.card:hover{
+  transform:scale(1.02);
+}
+
+/* cover */
+.cover{
+  height:420px;
+  background:url("https://raw.githubusercontent.com/mrhridoyex1/Profile/main/492103886_1759601034616649_406374186416210898_n.jpg");
+  background-size:cover;
+  background-position:center;
+  position:relative;
+}
+
+/* profile */
+.profile{
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  border:5px solid var(--bg);
+  object-fit:cover;
+  position:absolute;
+  bottom:-70px;
+  left:40px;
+}
+
+/* content */
+.content{
+  padding:90px 40px 40px;
+}
+
+/* typing */
+#typing::after{
+  content:"|";
+  animation:blink 1s infinite;
+}
+
+@keyframes blink{
+  50%{opacity:0;}
+}
+
+.name h1{
+  font-size:32px;
+}
+
+.name p{
+  opacity:0.7;
+}
+
+/* info */
+.info{
+  margin-top:25px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+.box{
+  background:rgba(255,255,255,0.08);
+  padding:15px;
+  border-radius:12px;
+  font-size:18px;   /* 👈 এটা নতুন */
+}
+
+/* social */
+.social{
+  margin-top:25px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+/* button */
+.btn{
+  margin-top:20px;
+  display:inline-block;
+  padding:12px 20px;
+  border-radius:10px;
+  background:linear-gradient(45deg,#06b6d4,#3b82f6);
+  color:#fff;
+  text-decoration:none;
+}
+
+/* 🌟 SKILLS */
+.skills{
+  margin-top:50px;
+  padding:0;
+  background:transparent;
+}
+
+.skill{
+  margin:15px 0;
+  font-weight:500;
+}
+
+.bar{
+  height:10px;
+  background:#222;
+  border-radius:10px;
+  overflow:hidden;
+  margin-top:5px;
+}
+
+.fill{
+  height:10px;
+  border-radius:10px;
+  background:linear-gradient(45deg,#4f46e5,#ec4899);
+}
+
+/* visitor */
+.visitor{
+  margin-top:30px;
+  text-align:center;
+  opacity:0.7;
+}
+.icon{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  color:#fff;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+/* আলাদা আলাদা কালার */
+.facebook{ background:#1877f2; }
+.instagram{ background:#d81a3d; }
+.whatsapp{ background:#25D366;}
+.youtube{ background:#ff0000; }
+.github{ background:#000000; }
+
+.icon:hover{
+  transform:scale(1.1);
+  opacity:0.8;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🌌 BACKGROUND -->
+<div class="bg3d"></div>
+
+<!-- 🎵 MUSIC -->
+<audio id="bgMusic" autoplay loop>
+  <source src="https://raw.githubusercontent.com/mrhridoyex1/My-info/main/music.MP3" type="audio/mpeg">
+</audio>
+
+<div class="toggle" onclick="toggleMode()">
+  <div class="switch">
+    <i id="modeIcon" class="fas fa-moon"></i>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="card">
+
+    <div class="cover">
+      <img class="profile" src="https://raw.githubusercontent.com/mrhridoyex1/Profile/main/646497064_2006659106577506_6909578186060495875_n.jpg">
+    </div>
+
+    <div class="content">
+
+      <div class="name">
+        <h1 id="typing"></h1>
+        <p>Web Developer • Student • Creator</p>
+      </div>
+
+      <div class="info">
+        <div class="box">📧 Email: md.hridoymia404@gmail.com</div>
+        <div class="box">📍 Location: Ullapara, Sirajganj, Bangladesh</div>
+        <div class="box">📱 Phone: +8801768787067, +8801341011104</div>
+        <div class="box">💼 Status: Creating Opportunities</div>
+      </div>
+
+      <div class="social">
+  <a href="https://www.facebook.com/md.hridoymia09" target="_blank" class="icon facebook">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+
+  <a href="https://www.instagram.com/xnxx01341" target="_blank" class="icon instagram">
+    <i class="fab fa-instagram"></i>
+  </a>
+
+  <a href="https://wa.me/8801768787067" target="_blank" class="icon whatsapp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <a href="https://www.youtube.com/@islamicthinking8x" target="_blank" class="icon youtube">
+    <i class="fab fa-youtube"></i>
+  </a>
+
+  <a href="https://github.com/mrhridoyex1" target="_blank" class="icon github">
+    <i class="fab fa-github"></i>
+  </a>
+</div>
+      <a href="https://raw.githubusercontent.com/mrhridoyex1/My-info/main/My-info-CV.pdf" download class="btn">⬇ Download CV</a>
+
+    </div>
+
+  </div> <!-- ✅ CARD ঠিকভাবে বন্ধ -->
+
+  <!-- 🌟 SKILLS (OUTSIDE CARD) -->
+  <div class="skills">
+
+    <h2 style="margin-top:40px; text-align:center;">My Skills</h2>
+
+    <div class="skill">
+      HTML
+      <div class="bar"><div class="fill" style="width:95%"></div></div>
+    </div>
+
+    <div class="skill">
+      CSS
+      <div class="bar"><div class="fill" style="width:90%"></div></div>
+    </div>
+
+    <div class="skill">
+      JavaScript
+      <div class="bar"><div class="fill" style="width:85%"></div></div>
+    </div>
+
+    <div class="skill">
+      Python
+      <div class="bar"><div class="fill" style="width:75%"></div></div>
+    </div>
+
+  </div>
+
+  <div class="visitor">
+    👁 Visitors: <span id="view">0</span>
+  </div>
+
+</div>
+
+<script>
+function toggleMode(){
+  document.body.classList.toggle("light");
+
+  let icon = document.getElementById("modeIcon");
+
+  if(document.body.classList.contains("light")){
+    icon.classList.remove("fa-moon");
+    icon.classList.add("fa-sun");
+  }else{
+    icon.classList.remove("fa-sun");
+    icon.classList.add("fa-moon");
+  }
+}
+
+/* typing */
+let text = "Hi, I am HRIDOY 👋";
+let i = 0;
+
+function typing(){
+  if(i < text.length){
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typing, 80);
+  }
+}
+typing();
+
+/* music unlock */
+window.addEventListener("click", () => {
+  document.getElementById("bgMusic").play();
+});
+
+/* visitor */
+let baseCount = 1564858;
+
+// যদি আগের value কম হয়, reset করবে
+let saved = localStorage.getItem("views");
+
+if(!saved || parseInt(saved) < baseCount){
+  localStorage.setItem("views", baseCount);
+}
+
+let count = parseInt(localStorage.getItem("views"));
+count++;
+
+localStorage.setItem("views", count);
+document.getElementById("view").innerText = count;
+</script>
+
+</body>
+</html>
